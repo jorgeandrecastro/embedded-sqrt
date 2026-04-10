@@ -1,0 +1,22 @@
+[package]
+name = "embedded-sqrt"
+version = "0.1.0"
+edition = "2024"
+authors = ["Jorge Andre Castro <georgeandrec@gmail.com>"]
+license = "GPL-2.0-or-later"
+description = "Racine carrée en virgule fixe Q15 pour systèmes embarqués `no_std`, zéro dépendance"
+repository = "https://github.com/jorgeandrecastro/embedded-sqrt"
+documentation = "https://docs.rs/embedded-sqrt"
+readme = "README.md"
+keywords = ["fixed-point", "math", "no-std"]
+categories = ["mathematics", "no-std", "embedded"]
+
+
+[profile.release]
+opt-level = "z"      # Optimisation pour la taille minimale du binaire
+lto = true           # Link-Time Optimization pour de meilleures performances
+codegen-units = 1    
+panic = "abort"      # Indispensable pour un environnement sans OS (no_std)
+strip = true         # Nettoyage des symboles pour réduire le poids
+
+
