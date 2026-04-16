@@ -42,6 +42,7 @@
 //! ```
 
 #![no_std]
+#![forbid(unsafe_code)]
 
 /// Calcule la racine carrée d'un nombre en virgule fixe Q15.
 ///
@@ -85,7 +86,7 @@
 pub fn sqrt(a: i32) -> i32 {
     if a <= 0 { return 0; }
 
-    // --- Normalisation ---
+    //  Normalisation 
     // On ramène val dans [16384, 65536[ = [0.5, 2.0[ en Q15.
     // Propriété utilisée : sqrt(a · 4^n) = 2^n · sqrt(a)
     // On mémorise n dans `shift` pour dénormaliser le résultat.
@@ -100,7 +101,7 @@ pub fn sqrt(a: i32) -> i32 {
         shift -= 1;
     }
 
-    // --- Estimation initiale ---
+    //  Estimation initiale 
     // Deux points de départ couvrant [0.5, 1.0[ et [1.0, 2.0[.
     // Erreur initiale < 20 %, suffisante pour converger en 6 itérations.
     let mut x: i64 = if val < 32768 {
@@ -109,7 +110,7 @@ pub fn sqrt(a: i32) -> i32 {
         39000 // ≈ 1.19 en Q15, centre géométrique de [1.0, √2[
     };
 
-    // --- Itérations Newton-Raphson ---
+    //  Itérations Newton-Raphson 
     // x_{n+1} = (x_n + val / x_n) / 2
     //
     // Division Q15 : (val / x) en Q15 = (val << 15) / x
@@ -120,7 +121,7 @@ pub fn sqrt(a: i32) -> i32 {
         x = (x + div) >> 1;
     }
 
-    // --- Dénormalisation ---
+    //  Dénormalisation 
     // On annule le shift appliqué à l'entrée.
     if shift >= 0 {
         (x >> shift) as i32

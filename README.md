@@ -5,7 +5,9 @@
 **Copyright (C) 2026 Jorge Andre Castro** — Licence GNU GPL v2 ou ultérieure.
 
 ---
-
+ 
+# Update Version 0.2.0
+La version introduit #![forbid(unsafe_code)] pour le safe on veut pas de code unsafe.
 ## Fonctionnalités
 
 - `#![no_std]` — fonctionne sans bibliothèque standard
@@ -40,7 +42,7 @@ Dans votre `Cargo.toml` :
 
 ```toml
 [dependencies]
-embedded-sqrt = "0.1"
+embedded-sqrt = "0.2.0"
 ```
 
 ---
