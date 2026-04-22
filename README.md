@@ -1,6 +1,10 @@
-# embedded-sqrt
+[![Crates.io](https://img.shields.io/crates/v/embedded-sqrt.svg)](https://crates.io/crates/embedded-sqrt)
+[![Docs.rs](https://docs.rs/embedded-sqrt/badge.svg)](https://docs.rs/embedded-sqrt)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-> Racine carrée en virgule fixe Q15 pour systèmes embarqués — `no_std`, zéro dépendance, testée sur pico 2040 sans fpu.
+
+# embedded-sqrt
+> Racine carrée en virgule fixe Q15 pour systèmes embarqués `no_std`, zéro dépendance, testée sur pico 2040 sans fpu.
 
 ---
 # Update version 0.2.1 testée sur la pico 2040 qui n'a pas de fpu
@@ -27,12 +31,12 @@ valeur_réelle = valeur_i32 / 32768.0
 ```
 
 | Valeur `i32` | Valeur réelle |
-|---|---|
-| `0`     | 0.0         |
-| `8192`  | 0.25        |
-| `16384` | 0.5         |
-| `23170` | ≈ 0.707 (1/√2) |
-| `32767` | ≈ 1.0       |
+|---------|--------------------|
+| `0`     | 0.0                |
+| `8192`  | 0.25               |
+| `16384` | 0.5                |
+| `23170` | ≈ 0.707 (1/√2)     |
+| `32767` | ≈ 1.0              |
 
 ---
 
@@ -42,7 +46,7 @@ Dans votre `Cargo.toml` :
 
 ```toml
 [dependencies]
-embedded-sqrt = "0.2.1"
+embedded-sqrt = "0.2.2"
 ```
 
 ---
@@ -176,7 +180,7 @@ async fn main(spawner: Spawner) {
 }
 ````
 
-**Le Cargo.toml indispensable sans lui pas de programme ni affichage*
+**Le Cargo.toml indispensable sans lui pas de programme ni affichage**
 ````
 [dependencies]
 embassy-rp = { version = "0.6.0", features = ["rt", "rp2040", "time-driver", "critical-section-impl"] }
